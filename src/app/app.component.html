@@ -1,0 +1,23 @@
+<mat-drawer-container>
+  <mat-drawer #drawer mode="side">
+    <mat-list>
+      <ng-container *ngFor="let user of users">
+        <mat-list-item (click)="userClicked(user.id, drawer)">{{
+          user.name
+        }}</mat-list-item>
+        <mat-divider></mat-divider>
+      </ng-container>
+    </mat-list>
+  </mat-drawer>
+
+  <button type="button" mat-raised-button (click)="drawer.toggle()">
+    Select User
+  </button>
+
+  <div *ngIf="selectedUser">
+    <h1>{{ selectedUser.name }}</h1>
+    <h2>{{ selectedUser.email }}</h2>
+    <a [href]="selectedUser?.website" target="_blank"> Visit WebSite </a>
+    <hr />
+  </div>
+</mat-drawer-container>
